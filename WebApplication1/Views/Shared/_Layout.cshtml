@@ -1,0 +1,201 @@
+﻿@{
+    ViewData["Title"] = "Hotel Booking";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - BordZ</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #FAFAFA;
+            padding: 1rem;
+            backdrop-filter: blur(8px);
+        }
+
+            .navbar::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-size: cover;
+                filter: blur(3px);
+                z-index: -1;
+            }
+
+        .logo img {
+            max-height: 50px; /* Adjust the height as needed */
+            width: auto; /* Maintain aspect ratio */
+            margin-right: 20px; /* Add spacing between logo and links */
+        }
+
+        .nav-links {
+            list-style-type: none;
+            display: flex;
+            flex-grow: 1; /* Allow links to take available space */
+            justify-content: flex-start; /* Align links to the left */
+        }
+
+            .nav-links li {
+                margin-right: 20px;
+            }
+
+            .nav-links a {
+                color: #4A602B;
+                text-decoration: none;
+                font-size: 1.1rem;
+            }
+
+        /* Navigation buttons */
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .login-btn, .signup-btn {
+            padding: 10px 20px;
+            color: white;
+            background-color: #ff7b00;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+            .login-btn:hover, .signup-btn:hover {
+                background-color: #e66900;
+            }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 30%;
+            border-radius: 10px;
+        }
+
+        .modal h2 {
+            margin-bottom: 20px;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .modal button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff7b00;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .modal button:hover {
+                background-color: #e66900;
+            }
+
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-family: Arial, sans-serif;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="~/images/logo.png" alt="BordzHotel logo">
+            </div>
+            <div>BordzHotel</div>
+            <ul class="nav-links">
+                <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                <li><a href="@Url.Action("About", "Home")">About Us</a></li>
+                <li><a href="@Url.Action("Rooms", "Home")">Rooms</a></li>
+                <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+            </ul>
+
+            <div class="nav-buttons">
+                <button class="login-btn" onclick="window.location.href='@Url.Action("Login", "Auth")'">Login</button>
+                <button class="signup-btn" onclick="window.location.href='@Url.Action("Signup", "Auth")'">Sign Up</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <script>
+        function openModal(id) {
+            document.getElementById(id).style.display = "block";
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = "none";
+        }
+
+        function login() {
+            alert("Logging in...");
+            window.location.href = "/Dashboard";
+        }
+
+        function signup() {
+            alert("Signing up...");
+            window.location.href = "/Dashboard";
+        }
+    </script>
+</body>
+</html>

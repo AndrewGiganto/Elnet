@@ -1,0 +1,212 @@
+﻿@{
+    ViewData["Title"] = "About Us - BordZHotel";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            background: url('@Url.Content("~/images/home.jpg")') no-repeat center center;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+            .hero-section h1 {
+                font-size: 3.5rem;
+                font-weight: bold;
+            }
+
+            .hero-section p {
+                font-size: 1.5rem;
+                margin-top: 10px;
+                font-weight: 300;
+            }
+
+            .hero-section .cta-btn {
+                background-color: #ff7b00;
+                color: white;
+                padding: 12px 25px;
+                font-size: 1.2rem;
+                font-weight: 600;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-top: 20px;
+                text-decoration: none;
+            }
+
+                .hero-section .cta-btn:hover {
+                    background-color: #e66900;
+                }
+
+        /* Section Container */
+        .section-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Who We Are Section */
+        .who-we-are {
+            margin-top: 30px;
+        }
+
+            .who-we-are h2 {
+                font-size: 2.8rem;
+                font-weight: 600;
+                margin-bottom: 20px;
+                color: #333;
+            }
+
+            .who-we-are p {
+                font-size: 1.2rem;
+                line-height: 1.8;
+                color: #555;
+                max-width: 800px;
+                margin: 0 auto 30px;
+                padding: 0px;
+            }
+
+        /* Our Values Section */
+        .values {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            gap: 20px;
+        }
+
+            .values .value-box {
+                width: 30%;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+                .values .value-box h3 {
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    color: #ff7b00;
+                    margin-bottom: 10px;
+                }
+
+                .values .value-box p {
+                    font-size: 1rem;
+                    color: #333;
+                }
+
+        /* Image Section */
+        .image-section {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+            .image-section .image-box {
+                width: 45%;
+                height: 300px;
+                background-size: cover;
+                background-position: center;
+                border-radius: 10px;
+            }
+
+        /* Responsive Design */
+        media (max-width: 768px) {
+            .values
+
+        {
+            flex-direction: column;
+        }
+
+        .values .value-box {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .image-section {
+            flex-direction: column;
+        }
+
+            .image-section .image-box {
+                width: 100%;
+                height: 250px;
+            }
+
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div>
+            <h1>Welcome to BordZHotel</h1>
+            <a href="@Url.Action("Contact", "Home")" class="cta-btn">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <div class="section-container">
+        <!-- Who We Are -->
+        <div class="who-we-are">
+            <h2>About Us</h2>
+            <p>
+                At BordZHotel, we are dedicated to providing luxury accommodations with exceptional service. Our mission is to create memorable experiences for our guests by offering world-class amenities, comfort, and personalized attention. With years of experience in the hospitality industry, we strive to exceed your expectations and provide an unforgettable stay.
+            </p>
+        </div>
+
+        <!-- Our Values -->
+        <div class="values">
+            <div class="value-box">
+                <h3>Our Mission</h3>
+                <p>
+                    To provide high-quality hospitality services that cater to our guest's needs, ensuring an unforgettable experience.
+                </p>
+            </div>
+            <div class="value-box">
+                <h3>Our Vision</h3>
+                <p>
+                    To be recognized as a leading hotel in the industry, offering unique experiences that blend luxury and comfort.
+                </p>
+            </div>
+            <div class="value-box">
+                <h3>Our Goal</h3>
+                <p>
+                    To create a lasting impact by delivering outstanding service, embracing innovation, and fostering a sustainable environment.
+                </p>
+            </div>
+        </div>
+
+        <!-- Image Section -->
+        <div class="image-section">
+            <div class="image-box" style="background-image: url('@Url.Content("~/images/room1.jpg")');"></div>
+            <div class="image-box" style="background-image: url('@Url.Content("~/images/room2.jpg")');"></div>
+        </div>
+    </div>
+
+</body>
+</html>

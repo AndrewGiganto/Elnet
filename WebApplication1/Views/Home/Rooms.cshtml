@@ -1,0 +1,304 @@
+﻿@{
+    ViewData["Title"] = "Hotel Rooms";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - BordZHotel</title>
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* General body and font settings */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Hero section style */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }
+
+            .hero-content h1 {
+                font-size: 3rem;
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+                margin-bottom: 30px;
+            }
+
+            .hero-content .btn-book {
+                padding: 10px 20px;
+                background-color: #FF7B00;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                font-size: 1.1rem;
+                cursor: pointer;
+            }
+
+                .hero-content .btn-book:hover {
+                    background-color: #e66900;
+                }
+
+        /* Navigation buttons */
+        .navigation {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            background-color: rgba(255, 255, 255, 0.5);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+            .nav-btn:hover {
+                background-color: rgba(255, 255, 255, 0.7);
+            }
+
+        /* Room listing section */
+        .room-listing {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            justify-items: center;
+        }
+
+        .room {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 280px;
+            text-align: center;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+        }
+
+            .room:hover {
+                transform: translateY(-10px);
+            }
+
+            .room img {
+                width: 100%;
+                height: 180px;
+                object-fit: cover;
+                border-bottom: 5px solid #FF7B00;
+            }
+
+        .room-info {
+            padding: 20px;
+        }
+
+            .room-info h3 {
+                margin: 10px 0;
+                font-size: 1.5em;
+                color: #333;
+            }
+
+            .room-info p {
+                font-size: 1rem;
+                color: #777;
+                margin-bottom: 10px;
+            }
+
+        .price {
+            font-weight: bold;
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .rating {
+            font-size: 1.2em;
+            color: #ffcc00;
+            margin-bottom: 10px;
+        }
+
+        .view-details {
+            background-color: #FF7B00;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: 5px;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+
+            .view-details:hover {
+                background-color: #e66900;
+            }
+
+    </style>
+</head>
+<body>
+
+    <div class="hero-section">
+        <div class="slider" id="slider">
+            <div class="slide" style="background-image: url('@Url.Content("~/images/1.jfif")');"></div>
+            <div class="slide" style="background-image: url('@Url.Content("~/images/2.jfif")');"></div>
+            <div class="slide" style="background-image: url('@Url.Content("~/images/3.jfif")');"></div>
+            <div class="slide" style="background-image: url('@Url.Content("~/images/4.jfif")');"></div>
+            <div class="slide" style="background-image: url('@Url.Content("~/images/5.jfif")');"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Welcome to BordZHotel</h1>
+            <p>Experience luxury and comfort like never before. Our rooms are designed for your perfect stay.</p>
+            <button class="btn-book">Book Now</button>
+        </div>
+        <div class="navigation">
+            <button class="nav-btn" onclick="prevSlide()">&#10094;</button>
+            <button class="nav-btn" onclick="nextSlide()">&#10095;</button>
+        </div>
+    </div>
+
+    <h2 style="text-align: center; margin-top: 40px; font-size: 2.5em; color: #333;">Our Hotel Rooms</h2>
+
+    <div class="room-listing">
+        <div class="room">
+            <img src="~/images/room1.jpg" alt="Master Room">
+            <div class="room-info">
+                <h3>Master Room</h3>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                <p class="price">$420/night</p>
+                <a href="@Url.Action("MasterRoom", "Home")">
+                    <button class="view-details">View Details</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="room">
+            <img src="~/images/room2.jpg" alt="Mini Suite">
+            <div class="room-info">
+                <h3>Mini Suite</h3>
+                <p class="rating">⭐⭐⭐⭐</p>
+                <p class="price">$540/night</p>
+                <a href="@Url.Action("MiniSuite", "Home")">
+                    <button class="view-details">View Details</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="room">
+            <img src="~/images/room3.jpg" alt="Ultra Deluxe">
+            <div class="room-info">
+                <h3>Ultra Deluxe</h3>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                <p class="price">$380/night</p>
+                <a href="@Url.Action("UltraDeluxe", "Home")">
+                    <button class="view-details">View Details</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="room">
+            <img src="~/images/room4.jpg" alt="Luxury Room">
+            <div class="room-info">
+                <h3>Luxury Room</h3>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                <p class="price">$269/night</p>
+                <a href="@Url.Action("LuxuryRoom", "Home")">
+                    <button class="view-details">View Details</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="room">
+            <img src="~/images/room5.jpg" alt="Premium Room">
+            <div class="room-info">
+                <h3>Premium Room</h3>
+                <p class="rating">⭐⭐⭐⭐</p>
+                <p class="price">$380/night</p>
+                <a href="@Url.Action("PremiumRoom", "Home")">
+                    <button class="view-details">View Details</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.transform = `translateX(${100 * (i - index)}%)`;
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            showSlide(currentIndex);
+        }
+
+        // Automatic slide change
+        let autoSlideInterval = setInterval(() => {
+            nextSlide();
+        }, 1000); // Change slide every 5 seconds
+
+        // Clear interval when hovering over the slider
+        const slider = document.getElementById('slider');
+        slider.addEventListener('mouseover', () => {
+            clearInterval(autoSlideInterval);
+        });
+
+        slider.addEventListener('mouseout', () => {
+            autoSlideInterval = setInterval(() => {
+                nextSlide();
+            }, 5000); // Restart the interval
+        });
+
+        // Initial call to display the first slide
+        showSlide(currentIndex);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,300 @@
+﻿@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - BordZHotel</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and font settings */
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 50px;
+            background-color: whitesmoke; /* Orange background color */
+            color: black;
+            position: relative;
+        }
+
+        /* Left side text */
+        .left {
+            flex: 1;
+            padding-right: 30px;
+        }
+
+            .left h1 {
+                font-size: 3rem;
+                font-weight: bold;
+                color: black;
+                margin-bottom: 20px;
+            }
+
+            .left p {
+                font-size: 1.2rem;
+                color: black;
+                margin-top: 10px;
+            }
+
+        /* Right side form */
+        .right {
+            flex: 1;
+            background-color: aliceblue;
+            color: black;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(1, 23, 0, 0.1);
+        }
+
+            .right h2 {
+                font-size: 2rem;
+                margin-bottom: 20px;
+                color: #ff7b00;
+            }
+
+            .right input,
+            .right textarea {
+                width: 100%;
+                padding: 12px;
+                margin: 10px 0;
+                border-radius: 5px;
+                border: 1px solid #black;
+                font-size: 1rem;
+            }
+
+            .right textarea {
+                height: 150px;
+            }
+
+            .right button {
+                width: 100%;
+                padding: 12px;
+                background-color: #ff7b00;
+                color: black;
+                border: none;
+                font-size: 1.2rem;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+                .right button:hover {
+                    background-color: #e66900;
+                }
+
+        /* Customer Care Section */
+        .customer-care {
+            margin-top: 30px;
+        }
+
+            .customer-care h3 {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+                color: black;
+            }
+
+            .customer-care ul {
+                list-style-type: none;
+                margin-top: 20px;
+            }
+
+                .customer-care ul li {
+                    margin-bottom: 10px;
+                }
+
+                    .customer-care ul li a {
+                        color: black;
+                        text-decoration: none;
+                        font-size: 1rem;
+                    }
+
+                        .customer-care ul li a:hover {
+                            text-decoration: underline;
+                        }
+
+            /* Customer Care People */
+            .customer-care .people {
+                display: flex;
+                margin-top: 20px;
+            }
+
+        .people .person {
+            margin-right: 30px;
+            text-align: center;
+        }
+
+        .people .person p {
+           font-size: 18px;
+        }
+
+            .people .person img {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                margin-bottom: 10px;
+            }
+
+        /* Reach out and Other ways to connect */
+        .reach-out, .social {
+            margin-top: 30px;
+        }
+
+            .reach-out p, .social p {
+                font-size: 1.1rem;
+                color: black;
+            }
+
+            .social a {
+                color: #ff7b00;
+                text-decoration: none;
+            }
+
+        /* Submit Button */
+        .cta-btn {
+            background-color: #ff7b00;
+            color: black;
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+            .cta-btn:hover {
+                background-color: #e66900;
+            }
+
+        /* Responsive Design */
+        media (max-width: 768px) {
+            .contact-section
+
+        {
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .left,
+        .right {
+            width: 100%;
+            padding: 20px;
+        }
+
+
+        .right {
+            margin-top: 20px;
+        }
+        
+
+    </style>
+</head>
+<body>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <!-- Left Section (Contact Info) -->
+        <div class="left">
+            <h1>Contact Us</h1>
+            <p>Our team is ready to help you! Have any questions or inquiries? Get in touch with us now, and we'll get back to you as soon as possible.</p>
+
+            <!-- Reach Out Section -->
+            <div class="reach-out">
+                <h3>Reach out to us!</h3>
+                <p>Have some questions? Want to say hi or know more about our services? Send us a message and we will get back to you soon!</p>
+            </div>
+
+            <!-- Customer Care Section -->
+            <div class="customer-care">
+                <h3>Customer Care</h3>
+                <ul>
+                    <li><a href="mailto:contact@bordzhotel.com">Email: contact@bordzhotel.com</a></li>
+                    <li><a href="tel:+123456789">Phone: +1 234 567 890</a></li>
+                </ul>
+                <div class="people">
+                    <div class="person">
+                        <img src="~/images/jay.jpg" alt="jay">
+                        <p>Canete Ernesto </p>
+                     
+                      
+
+                    </div>
+                    <div class="person">
+                        <img src="~/images/nicole.jfif" alt="Master Room">
+                        <p>Nicole Abelgas</p>
+                       
+                     
+
+                    </div>
+      
+                    <div class="person">
+                        <img src="~/images/andrew.jfif" alt="Master Room">
+                        <p>Andrew Giganto</p>
+                     
+                  
+
+                    </div>
+                    <div class="person">
+                        <img src="~/images/roldan.jpg" alt="Master Room">
+                        <p>Roldan Matthew</p>
+                        
+                     
+
+                    </div>
+                    <div class="person">
+                        <img src="~/images/earl.jpg" alt="Master Room">
+                        <p>Estimo Joseph</p>
+                     
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Section (Form) -->
+        <div class="right">
+            <h2>Send Us a Message</h2>
+            <p>Fill out the form below to reach us:</p>
+            <form action="/send-message" method="post">
+                <input type="text" name="first-name" placeholder="First Name" required />
+                <input type="text" name="last-name" placeholder="Last Name" required />
+                <input type="email" name="email" placeholder="Your Email Address" required />
+                <input type="tel" name="phone" placeholder="Phone Number" required />
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+
+            <div class="social">
+                <p>Follow us on:</p>
+                <a href="https://web.facebook.com/profile.php?id=61573436844107" target="_blank">Facebook</a> |
+                <a href="https://instagram.com/BordZHotel" target="_blank">Instagram</a> |
+                <a href="https://twitter.com/BordZHotel" target="_blank">Twitter</a>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

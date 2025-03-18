@@ -1,0 +1,234 @@
+﻿@{
+    ViewData["Title"] = "Hotel Booking";
+}
+
+<div class="hotel-container">
+    <div class="header">
+        <h1>Mini Suite <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></h1>
+        <div class="price-section">
+            <div>
+                <del>$540</del> <strong>$499</strong>
+            </div>
+        </div>
+    </div>
+
+    <div class="gallery">
+        <div class="main-image">
+            <img src="/images/room1.jpg" alt="Room" class="large-img">
+        </div>
+        <div class="thumbnails">
+            <img src="/images/room2.jpg" alt="Balcony">
+            <img src="/images/room3.jpg" alt="Suite Room">
+            <img src="/images/lobby.jpg" alt="Lobby">
+            <img src="/images/pool.jpg" alt="Pool">
+        </div>
+    </div>
+
+    <div class="content-section">
+        <div class="highlights">
+            <h3>Highlights</h3>
+            <div class="features">
+                <div><i class="fas fa-medal"></i> Excellent Service</div>
+                <div><i class="fas fa-utensils"></i> Delicious Breakfast</div>
+                <div><i class="fas fa-sun"></i> Superb Views</div>
+                <div><i class="fas fa-map-marker-alt"></i> Ideal Location</div>
+                <div><i class="fas fa-cube"></i> Lots to Do</div>
+            </div>
+        </div>
+
+        <div class="reviews">
+            <h3>5/5 Very Good</h3>
+            <p>Good ambiance</p>
+        </div>
+
+        <div class="amenities">
+            <h3>Amenities</h3>
+            <ul>
+                <li><i class="fas fa-spa"></i> Spa</li>
+                <li><i class="fas fa-concierge-bell"></i> 24-hour Front Desk</li>
+                <li><i class="fas fa-utensils"></i> Restaurant</li>
+                <li><i class="fas fa-wifi"></i> Free Wi-Fi</li>
+                <li><i class="fas fa-smoking"></i> Smoking Area</li>
+                <li><i class="fas fa-language"></i> English & Filipino</li>
+                <li><i class="fas fa-money-check-alt"></i> ATM</li>
+            </ul>
+        </div>
+
+        <div class="location-details">
+            <h3>Surroundings</h3>
+            <ul>
+                <li>Boracay Island Sunset Sailing (190m)</li>
+                <li>Paradise Garden Resort Hotel (270m)</li>
+                <li>Station 3 (320m)</li>
+                <li>Crown Regency Resort and Convention Center (350m)</li>
+                <li>White Beach (460m)</li>
+            </ul>
+        </div>
+        <div class=" amenities">
+            <button>BOOK NOW!</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8;
+    }
+
+    .hotel-container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        max-width: 1200px;
+        margin: 20px auto;
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+    .stars {
+        color: gold;
+    }
+
+    .location {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 10px;
+    }
+
+        .location a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+    .price-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+        .price-section del {
+            color: #aaa;
+            font-size: 1.2rem;
+        }
+
+        .price-section strong {
+            color: #e66900;
+            font-size: 1.5rem;
+        }
+
+    .btn-select {
+        background: #007BFF;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+
+        .btn-select:hover {
+            background: #005bb5;
+        }
+
+    .gallery {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .main-image img {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .thumbnails {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+        .thumbnails img {
+            width: calc(25% - 10px);
+            border-radius: 8px;
+        }
+
+    .see-all {
+        background: #ddd;
+        color: #333;
+        text-align: center;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .tabs {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+        .tabs span {
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .tabs span.active {
+                background: #007BFF;
+                color: white;
+            }
+
+    .content-section {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .highlights, .reviews, .amenities, .location-details {
+        background: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .features div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 5px 0;
+    }
+
+        .features div i {
+            color: #007BFF;
+        }
+
+    .amenities ul, .location-details ul {
+        list-style: none;
+        padding: 0;
+    }
+
+        .amenities ul li, .location-details ul li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 5px 0;
+        }
+
+            .amenities ul li i, .location-details ul li i {
+                color: #007BFF;
+            }
+</style>

@@ -1,0 +1,367 @@
+﻿@{
+    ViewData["Title"] = "Hotel Booking";
+}
+
+<!DOCTYPE html>
+<html lang="en-PH" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .hero-section {
+            background-color: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+            .hero-section h1 {
+                font-size: 2rem;
+                color: #0066cc;
+                margin-bottom: 20px;
+            }
+
+        .search-box {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+            .search-box input,
+            .search-box select {
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+        .btn-search {
+            background-color: #0066cc;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+            .btn-search:hover {
+                background-color: #004c99;
+            }
+
+        .partner-logos {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+            .partner-logos img {
+                height: 30px;
+            }
+
+        .features-section {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 60px;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+
+        .feature {
+            text-align: center;
+        }
+
+            .feature img {
+                height: 80px;
+                margin-bottom: 10px;
+            }
+
+            .feature h3 {
+                color: #0066cc;
+            }
+
+            .feature p {
+                color: #666666;
+            }
+
+        /* Additional styles to mimic the target layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Styles for the hot deals section */
+        .hot-deals-section {
+            padding: 40px 20px;
+            background-color: #ffffff;
+            text-align: center;
+            position: relative; /* Added for positioning the button */
+        }
+
+        .hot-deals-title {
+            font-size: 1.5rem;
+            color: #0066cc;
+            margin-bottom: 20px;
+        }
+
+        .deal-card {
+            display: inline-block;
+            width: 30%;
+            margin: 1%;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+            .deal-card img {
+                width: 100%;
+                border-radius: 8px;
+                margin-bottom: 10px;
+            }
+
+            .deal-card h4 {
+                font-size: 1rem;
+                color: #333;
+            }
+
+            .deal-card p {
+                color: #666;
+            }
+
+            .deal-card .price {
+                color: #0066cc;
+                font-weight: bold;
+            }
+
+            .deal-card .discount {
+                color: red;
+                font-size: 0.9rem;
+            }
+
+            .deal-card .btn-check-deal {
+                background-color: #0066cc;
+                color: white;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+                .deal-card .btn-check-deal:hover {
+                    background-color: #004c99;
+                }
+
+        /* Styles for the Rooms button */
+        .btn-rooms {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            color: black;
+            padding: 50px 10px 10px 20px;
+            cursor: pointer;
+        }
+
+
+        /* Footer styles */
+        .footer {
+            background-color: #1c1c1c;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 20px;
+        }
+
+            .footer-links div {
+                text-align: left;
+            }
+
+            .footer-links a {
+                color: #fff;
+                text-decoration: none;
+                display: block;
+                margin-bottom: 10px;
+            }
+
+                .footer-links a:hover {
+                    text-decoration: underline;
+                }
+
+        .newsletter-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+            .newsletter-section input {
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            .newsletter-section button {
+                background-color: #0066cc;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+                .newsletter-section button:hover {
+                    background-color: #004c99;
+                }
+
+        .footer-bottom {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <noscript data-testid="gtm-noscript"></noscript>
+    <div id="__next">
+        <div class="container">
+            <div class="section hero-section">
+                <h1>Save up to 100% on your next hotel stay</h1>
+                <p>We compare hotel prices from multiple sites</p>
+
+                <div class="search-box">
+                    <input type="text" placeholder="Destination, Where to?">
+                    <input type="date" placeholder="Check-in">
+                    <input type="date" placeholder="Check-out">
+                    <select>
+                        <option>2 Guests, 1 Room</option>
+                        <option>1 Guest, 1 Room</option>
+                        <option>3 Guests, 1 Room</option>
+                    </select>
+                    <button class="btn-search">Search</button>
+                </div>
+            </div>
+
+            <div class="partner-logos section">
+                <img src="~/images/sample.jfif" alt="Booking.com">
+                <img src="~/images/sample.jfif" alt="Hotels.com">
+                <img src="~/images/sample.jfif" alt="Expedia">
+                <img src="~/images/sample.jfif" alt="Agoda">
+                <img src="~/images/sample.jfif" alt="Trip.com">
+            </div>
+
+            <div class="features-section section">
+                <div class="feature">
+                    <img src="~/images/sample.jfif" alt="Search">
+                    <h3>Search simply</h3>
+                    <p>Search through 5 million hotels in just a few seconds.</p>
+                </div>
+                <div class="feature">
+                    <img src="~/images/sample.jfif" alt="Compare">
+                    <h3>Compare confidently</h3>
+                    <p>Compare hotel prices from multiple sites at once.</p>
+                </div>
+                <div class="feature">
+                    <img src="~/images/sample.jfif" alt="Save">
+                    <h3>Save big</h3>
+                    <p>Discover a great deal to book on our partner sites.</p>
+                </div>
+            </div>
+
+            <!-- Hot Deals Section -->
+            <div class="hot-deals-section section">
+                <h2 class="hot-deals-title">Hot hotel deals right now</h2>
+                <div class="deal-card">
+                    <img src="~/images/sample.jfif" alt="Boracay Ocean Club Beach Resort">
+                    <h4>Boracay Ocean Club Beach Resort</h4>
+                    <p>7.9 - Good (614) ● Visayas, Philippines</p>
+                    <p class="price">₱3,284 per night</p>
+                    <p class="discount">11% less than usual</p>
+                    <button class="btn-check-deal">Check deal</button>
+                </div>
+                <div class="deal-card">
+                    <img src="~/images/sample.jfif" alt="New Coast Hotel Manila">
+                    <h4>New Coast Hotel Manila</h4>
+                    <p>8.7 - Excellent (11607) ● Luzon, Philippines</p>
+                    <p class="price">₱4,991 per night</p>
+                    <p class="discount">15% less than usual</p>
+                    <button class="btn-check-deal">Check deal</button>
+                </div>
+                <div class="deal-card">
+                    <img src="~/images/sample.jfif" alt="Candeo Hotels Osaka Kishibe">
+                    <h4>Candeo Hotels Osaka Kishibe</h4>
+                    <p>8.7 - Excellent (1019) ● Kinki, Japan</p>
+                    <p class="price">₱5,869 per night</p>
+                    <p class="discount">19% less than usual</p>
+                    <button class="btn-check-deal">Check deal</button>
+                </div>
+                <!-- Rooms Button -->
+                <a href="@Url.Action("Rooms", "Home")" class="btn-rooms">More Rooms</a>
+                
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <div>
+                    <a href="#">Company</a>
+                    <a href="#">Jobs</a>
+                    <a href="#">Press</a>
+                    <a href="#">Investor relations</a>
+                    <a href="#">Mobile apps - searching on the go</a>
+                    <a href="#">BordzHotel Business Studio</a>
+                </div>
+                <div>
+                    <a href="#">Help</a>
+                    <a href="#">Learn how trivago works</a>
+                    <a href="#">Terms and conditions</a>
+                    <a href="#">Legal information</a>
+                    <a href="#">Do Not Sell My Personal Information</a>
+                    <a href="#">Privacy notice</a>
+                    <a href="#">DSA information</a>
+                    <a href="#">Cyber Security</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>BordzHotel, Philippines</p>
+                <p>Copyright 2025 Bordzhotel| All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="toast-root" class="hidden"></div>
+    <div id="overlay-root" class="hidden"></div>
+    <section id="modal-root" class="hidden"></section>
+    <section id="idle-notification-modal-root" class="hidden"></section>
+</body>
+</html>
