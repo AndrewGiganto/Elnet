@@ -2,13 +2,8 @@
     ViewData["Title"] = "Contact Us";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"] - BordZHotel</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+@section Styles {
+
     <style>
         /* General Reset */
         * {
@@ -190,28 +185,24 @@
 
         /* Responsive Design */
         media (max-width: 768px) {
-            .contact-section
+            .contact-section {
+                flex-direction: column;
+                padding: 20px;
+            }
 
-        {
-            flex-direction: column;
-            padding: 20px;
+            .left,
+            .right {
+                width: 100%;
+                padding: 20px;
+            }
+
+            .right {
+                margin-top: 20px;
+            }
         }
-
-        .left,
-        .right {
-            width: 100%;
-            padding: 20px;
-        }
-
-
-        .right {
-            margin-top: 20px;
-        }
-        
 
     </style>
-</head>
-<body>
+}
 
     <!-- Contact Section -->
     <section class="contact-section">
@@ -295,6 +286,3 @@
             </div>
         </div>
     </section>
-
-</body>
-</html>

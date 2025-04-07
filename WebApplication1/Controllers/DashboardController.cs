@@ -1,18 +1,41 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebApplication1.Models; // Make sure to include the correct namespace for the model
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
+using WebApplication1.Data;
+using WebApplication1.Models;
+using System.Security.Claims;
 
-public class DashboardController : Controller
+namespace WebApplication1.Controllers
 {
-    public IActionResult Index()
+    [Authorize]
+    public class DashboardController : Controller
     {
-        // Create the ViewModel and populate it with data
-        var model = new DashboardViewModel
-        {
-            UserName = "Admin",  // Example: you could get this dynamically from the logged-in user
-            TotalUsers = 100  // Example: replace with real data from the database
-        };
+        private readonly HotelManagementContext _context;
 
-        // Pass the ViewModel to the view
-        return View(model);
+        public DashboardController(HotelManagementContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var username = User.Identity?.Name;
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Auth");
+            }
+
+            var model = new DashboardViewModel
+            {
+                UserName = user.Username,
+                TotalUsers = await _context.Users.CountAsync(),
+                TotalRooms = await _context.Rooms.CountAsync(),
+                TotalBookings = await _context.Bookings.CountAsync()
+            };
+
+            return View(model);
+        }
     }
 }

@@ -1,1 +1,100 @@
-﻿
+﻿@model WebApplication1.Models.SignupViewModel
+@{
+    ViewData["Title"] = "Sign Up";
+}
+
+<div class="signup-container">
+    <h2>Sign up</h2>
+    <p>Create an account or <a asp-controller="Auth" asp-action="Login">Sign In</a></p>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Error</div>
+    }
+
+    <form asp-action="Signup" asp-controller="Auth" method="post">
+        <div class="form-group">
+            <label asp-for="Username"></label>
+            <input asp-for="Username" class="form-control" required />
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" type="email" class="form-control" required />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Password"></label>
+            <input asp-for="Password" type="password" class="form-control" required />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Confirm Password</label>
+            <input name="confirmPassword" type="password" class="form-control" required />
+        </div>
+
+        <button type="submit" class="signup-button">Sign up</button>
+    </form>
+
+    <p>By signing up to create an account, you are accepting our <a href="#">terms of service</a> and <a href="#">privacy policy</a></p>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<style>
+    .signup-container {
+        max-width: 400px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+        .signup-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+    .signup-button {
+        width: 100%;
+        padding: 10px;
+        background-color: #6a0dad;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+        .signup-button:hover {
+            background-color: #5a0099;
+        }
+
+    .text-danger {
+        color: red;
+        font-size: 12px;
+    }
+</style>
+
