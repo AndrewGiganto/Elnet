@@ -2,12 +2,7 @@
     ViewData["Title"] = "Hotel Booking";
 }
 
-<!DOCTYPE html>
-<html lang="en-PH" dir="ltr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"]</title>
+@section Styles {
     <style>
         body {
             margin: 0;
@@ -23,7 +18,7 @@
 
             .hero-section h1 {
                 font-size: 2rem;
-                color: #0066cc;
+                color: orange;
                 margin-bottom: 20px;
             }
 
@@ -45,7 +40,7 @@
             }
 
         .btn-search {
-            background-color: #0066cc;
+            background-color: orange;
             color: white;
             padding: 10px 20px;
             border-radius: 5px;
@@ -55,7 +50,7 @@
         }
 
             .btn-search:hover {
-                background-color: #004c99;
+                background-color: gold;
             }
 
         .partner-logos {
@@ -87,7 +82,7 @@
             }
 
             .feature h3 {
-                color: #0066cc;
+                color: orange;
             }
 
             .feature p {
@@ -118,7 +113,7 @@
 
         .hot-deals-title {
             font-size: 1.5rem;
-            color: #0066cc;
+            color: orange;
             margin-bottom: 20px;
         }
 
@@ -228,7 +223,7 @@
             }
 
             .newsletter-section button {
-                background-color: #0066cc;
+                background-color: orange;
                 color: white;
                 padding: 10px 20px;
                 border: none;
@@ -238,7 +233,7 @@
             }
 
                 .newsletter-section button:hover {
-                    background-color: #004c99;
+                    background-color: darkorange;
                 }
 
         .footer-bottom {
@@ -246,17 +241,15 @@
             color: #aaa;
         }
     </style>
-</head>
-<body>
+}
     <noscript data-testid="gtm-noscript"></noscript>
     <div id="__next">
         <div class="container">
             <div class="section hero-section">
-                <h1>Save up to 100% on your next hotel stay</h1>
-                <p>We compare hotel prices from multiple sites</p>
+                <h1>Welcome to BorzHotel</h1>
+                <p>where we prioritize your stay</p>
 
                 <div class="search-box">
-                    <input type="text" placeholder="Destination, Where to?">
                     <input type="date" placeholder="Check-in">
                     <input type="date" placeholder="Check-out">
                     <select>
@@ -284,8 +277,8 @@
                 </div>
                 <div class="feature">
                     <img src="~/images/sample.jfif" alt="Compare">
-                    <h3>Compare confidently</h3>
-                    <p>Compare hotel prices from multiple sites at once.</p>
+                    <h3>Confortable</h3>
+                    <p>Feel like home.</p>
                 </div>
                 <div class="feature">
                     <img src="~/images/sample.jfif" alt="Save">
@@ -299,27 +292,24 @@
                 <h2 class="hot-deals-title">Hot hotel deals right now</h2>
                 <div class="deal-card">
                     <img src="~/images/sample.jfif" alt="Boracay Ocean Club Beach Resort">
-                    <h4>Boracay Ocean Club Beach Resort</h4>
-                    <p>7.9 - Good (614) ● Visayas, Philippines</p>
-                    <p class="price">₱3,284 per night</p>
-                    <p class="discount">11% less than usual</p>
-                    <button class="btn-check-deal">Check deal</button>
+                    <h4>Master Room</h4>
+                    <p class="price">$420 per night</p>
+                    <p class="discount">10% less than usual</p>
+                    <a href="@Url.Action("MasterRoom", "Home")"><button class="btn-check-deal">Check deal</button></a>
                 </div>
                 <div class="deal-card">
                     <img src="~/images/sample.jfif" alt="New Coast Hotel Manila">
-                    <h4>New Coast Hotel Manila</h4>
-                    <p>8.7 - Excellent (11607) ● Luzon, Philippines</p>
-                    <p class="price">₱4,991 per night</p>
-                    <p class="discount">15% less than usual</p>
-                    <button class="btn-check-deal">Check deal</button>
+                    <h4>Luxury Room</h4>
+                    <p class="price">$269 per night</p>
+                    <p class="discount">10% less than usual</p>
+                    <a href ="@Url.Action("LuxuryRoom", "Home")"><button class="btn-check-deal">Check deal</button></a>
                 </div>
                 <div class="deal-card">
                     <img src="~/images/sample.jfif" alt="Candeo Hotels Osaka Kishibe">
-                    <h4>Candeo Hotels Osaka Kishibe</h4>
-                    <p>8.7 - Excellent (1019) ● Kinki, Japan</p>
-                    <p class="price">₱5,869 per night</p>
+                    <h4>Premium Room</h4>
+                    <p class="price">$380 per night</p>
                     <p class="discount">19% less than usual</p>
-                    <button class="btn-check-deal">Check deal</button>
+                    <a href="@Url.Action("PremiumRoom", "Home")"><button class="btn-check-deal">Check deal</button></a>
                 </div>
                 <!-- Rooms Button -->
                 <a href="@Url.Action("Rooms", "Home")" class="btn-rooms">More Rooms</a>
@@ -363,5 +353,3 @@
     <div id="overlay-root" class="hidden"></div>
     <section id="modal-root" class="hidden"></section>
     <section id="idle-notification-modal-root" class="hidden"></section>
-</body>
-</html>

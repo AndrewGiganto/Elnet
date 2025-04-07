@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"] - BordZ</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @RenderSection("Styles", required: false)
     <style>
         * {
             margin: 0;
@@ -46,6 +47,10 @@
             max-height: 50px; /* Adjust the height as needed */
             width: auto; /* Maintain aspect ratio */
             margin-right: 20px; /* Add spacing between logo and links */
+        }
+
+        .title {
+            margin-right: 20px; /* Add spacing between title and links */
         }
 
         .nav-links {
@@ -159,7 +164,7 @@
             <div class="logo">
                 <img src="~/images/logo.png" alt="BordzHotel logo">
             </div>
-            <div>BordzHotel</div>
+            <div class="title">BordzHotel</div>
             <ul class="nav-links">
                 <li><a href="@Url.Action("Index", "Home")">Home</a></li>
                 <li><a href="@Url.Action("About", "Home")">About Us</a></li>
@@ -197,5 +202,6 @@
             window.location.href = "/Dashboard";
         }
     </script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

@@ -1,9 +1,13 @@
-﻿namespace WebApplication1.Models  // Make sure this matches your project's namespace
+﻿using System;
+using System.Collections.Generic;
+
+namespace WebApplication1.Models
 {
     public class DashboardViewModel
     {
-        public string UserName { get; set; }
-        public int TotalUsers { get; set; }  // Example property, add more as needed
-        // Add other properties you need for the dashboard
+        public required string UserName { get; set; }
+        public int TotalUsers { get; set; }
+        public int TotalRooms { get; set; }
+        public int TotalBookings { get; set; }
     }
 }

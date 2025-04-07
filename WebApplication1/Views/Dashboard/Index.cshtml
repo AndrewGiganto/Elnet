@@ -1,285 +1,216 @@
 ﻿@{
-    Layout = null;  // Disable layout for this page
-    ViewData["Title"] = "Admin Dashboard";
+    Layout = null ; ViewData["Title"] = "Dashboard Overview";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"] - BordZ</title>
+@section Styles {
     <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: Arial, sans-serif;
-            background: #f4f7fc;
-            display: flex;
-            justify-content: flex-start;
-            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
             height: 100vh;
-            overflow: hidden;
         }
 
-        .side-nav {
-            width: 220px;
-            background-color: #2C3E50;
-            padding-top: 20px;
+        .sidebar {
+            width: 250px;
+            background-color: #1e293b;
+            color: #ffffff;
+            padding: 20px;
+            height: 100%;
             position: fixed;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease-in-out;
         }
 
-            .side-nav a {
-                color: #fff;
-                font-size: 1.1rem;
-                text-decoration: none;
-                padding: 15px;
-                width: 100%;
-                text-align: center;
-                transition: all 0.3s ease-in-out;
+            .sidebar ul {
+                list-style: none;
+                padding: 0;
             }
 
-                .side-nav a:hover {
-                    background-color: #34495E;
-                    transform: translateX(5px);
+                .sidebar ul li {
+                    margin: 15px 0;
                 }
 
-                .side-nav a.active {
-                    background-color: #FF7B00;
-                }
+                    .sidebar ul li a {
+                        color: #ffffff;
+                        text-decoration: none;
+                        display: flex;
+                        align-items: center;
+                    }
 
-                .side-nav a i {
-                    margin-right: 10px;
-                }
+                        .sidebar ul li a:hover {
+                            text-decoration: underline;
+                        }
 
-        .content-area {
-            margin-left: 220px;
+        .sign-out-button {
+            margin-top: auto;
+            padding: 10px 20px;
+            background-color: #ef4444;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+            .sign-out-button:hover {
+                background-color: #b91c1c;
+            }
+
+        .main-content {
+            margin-left: 250px;
             padding: 20px;
-            width: calc(100% - 220px);
-            overflow-y: auto;
+            width: calc(100% - 250px);
         }
 
-        .dashboard-container {
-            background-color: #ffffff;
-            border-radius: 8px;
-            display: flex;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .left-panel {
-            width: 70%;
-            padding: 20px;
-            border-right: 1px solid #e0e0e0;
-        }
-
-        .right-panel {
-            width: 30%;
-            padding: 20px;
-        }
-
-        .header {
+        .dashboard-cards {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
-            .header h2 {
-                font-size: 2rem;
+        .card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+            .card h2 {
+                font-size: 18px;
                 color: #333;
+                margin-bottom: 10px;
             }
 
-        .listing-card {
-            background-color: #f9f9f9;
+            .card p {
+                font-size: 14px;
+                color: #666;
+                margin: 5px 0;
+            }
+
+        .package-selection {
+            margin-top: 20px;
+        }
+
+            .package-selection h2 {
+                font-size: 18px;
+                color: #333;
+                margin-bottom: 10px;
+            }
+
+        .package {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
             border-radius: 8px;
             padding: 15px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
         }
 
-            .listing-card img {
-                width: 120px;
-                height: 100px;
-                object-fit: cover;
-                border-radius: 5px;
-            }
-
-            .listing-card .info {
-                flex: 1;
-                padding-left: 20px;
-            }
-
-            .listing-card h3 {
-                font-size: 1.3rem;
-                margin-bottom: 5px;
+            .package p {
+                font-size: 14px;
                 color: #333;
+                margin-bottom: 5px;
             }
 
-            .listing-card p {
-                font-size: 1rem;
-                color: #777;
-                margin-bottom: 10px;
-            }
-
-            .listing-card .price {
-                font-size: 1.2rem;
-                color: #ff7b00;
-                font-weight: bold;
-            }
-
-        .save-btn {
-            background-color: #ff7b00;
-            color: white;
-            padding: 10px 20px;
+        .progress-bar {
+            height: 10px;
             border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            border: none;
         }
 
-            .save-btn:hover {
-                background-color: #e66900;
-            }
-
-        .details-section {
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        .progress-bar-58 {
+            width: 58%;
+            background-color: #3b82f6;
         }
 
-            .details-section h3 {
-                font-size: 1.5rem;
-                margin-bottom: 10px;
-            }
-
-            .details-section p {
-                font-size: 1rem;
-                margin-bottom: 10px;
-                color: #555;
-            }
-
-        .view-map-btn {
-            background-color: #ff7b00;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 5px;
-            cursor: pointer;
-            border: none;
-            font-size: 1.2rem;
-            display: inline-block;
+        .progress-bar-43 {
+            width: 43%;
+            background-color: #fbbf24;
         }
 
-            .view-map-btn:hover {
-                background-color: #e66900;
-            }
-
-        /* Login Button */
-        .logout-btn {
-            background-color: #ff7b00;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            margin-top: 30px;
-            width: 100%;
-            text-align: center;
-            border: none;
+        .progress-bar-33 {
+            width: 33%;
+            background-color: #10b981;
         }
 
-            .login-btn:hover {
-                background-color: #e66900;
-            }
+        .progress-bar-29 {
+            width: 29%;
+            background-color: #ef4444;
+        }
 
+        .progress-bar-20 {
+            width: 20%;
+            background-color: #6366f1;
+        }
+
+        .progress-bar-15 {
+            width: 15%;
+            background-color: #ec4899;
+        }
     </style>
-</head>
-<body>
+}
 
-    <!-- Side Navigation -->
-    <div class="side-nav">
-        <a href="#" class="active"><i class="fas fa-home"></i> Home</a>
-        <a href="#"><i class="fas fa-book"></i> Booking</a>
-        <a href="#"><i class="fas fa-envelope"></i> Message</a>
-        <a href="#"><i class="fas fa-list"></i> Listing</a>
-        <a href="#"><i class="fas fa-wallet"></i> Wallet</a>
-        <a href="#"><i class="fas fa-calendar"></i> Calendar</a>
-        <a href="#"><i class="fas fa-chart-line"></i> Reviews</a>
-        <a href="#"><i class="fas fa-user"></i> Profile</a>
-        <a href="#"><i class="fas fa-cogs"></i> Settings</a>
+<div class="sidebar">
+    <ul>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Bookings</a></li>
+        <li><a href="#">Room</a></li>
+        <li><a href="#">Reports</a></li>
+        <li><a href="#">Customers</a></li>
+        <li><a href="#">Payment</a></li>
+        <li><a href="#">Support</a></li>
+        <li><a href="#">Settings</a></li>
+    </ul>
+    <div class="sign-out-button">Sign Out</div>
+</div>
 
-        <!-- Login Button placed below settings -->
-        <form action="@Url.Action("Login", "Auth")" method="get">
-            <button type="submit" class="logout-btn">Logout</button>
-        </form>
-    </div>
-
-    <!-- Content Area -->
-    <div class="content-area">
-        <div class="dashboard-container">
-            <!-- Left Panel: List of Apartments -->
-            <div class="left-panel">
-                <div class="header">
-                    <h2>All Listings</h2>
-                    <input type="text" placeholder="Search..." style="padding: 10px; width: 200px; border-radius: 5px; border: 1px solid #ccc;">
-                </div>
-
-                <div class="listing-card">
-                    <img src="~/images/room5.jpg" alt="Apartment">
-                    <div class="info">
-                        <h3>Premium Room</h3>
-                        <p>3 Guests | 2 Bed</p>
-                        <div class="price">P1500</div>
-                    </div>
-                    <button class="save-btn">Save</button>
-                </div>
-
-                <div class="listing-card">
-                    <img src="~/images/room5.jpg" alt="Apartment">
-                    <div class="info">
-                        <h3>Economy Room</h3>
-                        <p>3 Guests | 2 Bed</p>
-                        <div class="price">P1200</div>
-                    </div>
-                    <button class="save-btn">Save</button>
-                </div>
-
-                <div class="listing-card">
-                    <img src="~/images/room5.jpg" alt="Apartment">
-                    <div class="info">
-                        <h3>Deluxe Room</h3>
-                        <p>3 Guests | 2 Bed</p>
-                        <div class="price">P2100</div>
-                    </div>
-                    <button class="save-btn">Save</button>
-                </div>
-            </div>
-
-            <!-- Right Panel: Apartment Details -->
-            <div class="right-panel">
-                <div class="details-section">
-                    <h3>BordZHotel</h3>
-                    <p>Location: Cebu City, Cebu</p>
-                    <p>Amenities: 1 Bathroom, Free WiFi, Swimming Pool, Fitness Center</p>
-                    <button class="view-map-btn">View Map</button>
-                </div>
-            </div>
+<div class="main-content">
+    <div class="dashboard-cards">
+        <div class="card">
+            <h2>Total Booking</h2>
+            <p>11,230</p>
+            <p>This Month: 1,913</p>
+            <p>This Week: 1,125</p>
+        </div>
+        <div class="card">
+            <h2>Rooms Available</h2>
+            <p>312</p>
+            <p>Booked (M): 913</p>
+            <p>Booked (W): 125</p>
+        </div>
+        <div class="card">
+            <h2>Expenses</h2>
+            <p>79,358.50 USD</p>
+            <p>This Month: 3,540.59 USD</p>
+            <p>This Week: 1,259.28 USD</p>
         </div>
     </div>
 
-</body>
-</html>
+    <div class="package-selection">
+        <h2>Top Selected Package</h2>
+        <div class="package">
+            <p>Stater Package</p>
+            <div class="progress-bar progress-bar-58"></div>
+        </div>
+        <div class="package">
+            <p>Honeymoon Package</p>
+            <div class="progress-bar progress-bar-43"></div>
+        </div>
+        <div class="package">
+            <p>Vacation Package</p>
+            <div class="progress-bar progress-bar-33"></div>
+        </div>
+        <div class="package">
+            <p>Continental Package</p>
+            <div class="progress-bar progress-bar-29"></div>
+        </div>
+        <div class="package">
+            <p>Spring Package</p>
+            <div class="progress-bar progress-bar-20"></div>
+        </div>
+        <div class="package">
+            <p>All Suite Package</p>
+            <div class="progress-bar progress-bar-15"></div>
+        </div>
+    </div>
+</div>

@@ -2,12 +2,7 @@
     ViewData["Title"] = "About Us - BordZHotel";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"]</title>
+@section Styles {
     <style>
         /* General Reset */
         * {
@@ -158,8 +153,7 @@
 
         }
     </style>
-</head>
-<body>
+}
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -207,6 +201,3 @@
             <div class="image-box" style="background-image: url('@Url.Content("~/images/room2.jpg")');"></div>
         </div>
     </div>
-
-</body>
-</html>
